@@ -1,10 +1,12 @@
+import { projects } from './data.js';
+
 export function createProject(name){
     const project = {
         id: crypto.randomUUID,
         name,
         todos: [],
     }
-    console.log(project.name);
+    projects.push(project);
 
     return project
 }
