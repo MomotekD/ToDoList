@@ -20,8 +20,8 @@
                             </div>
                             <div class="modalBottom">
                                 <label for="projectName">Project name:</label>
-                                <input type="text" name="projectName" >
-                                <button type="submit">Create</button>
+                                <input type="text" name="projectName" class="projectName" required>
+                                <button class="modalSubmit" type="submit">Create</button>
                             </div>
                         </form>
                     </dialog>
@@ -40,10 +40,10 @@
                         </div>
                         <div class="modalBottom">
                             <label for="toDoName">To do name:</label>
-                            <input type="text" name="toDoName" required> <br />
+                            <input type="text" name="toDoName" class="toDoName" required> <br />
                             <label for="toDoNotes">Notes:</label> <br />
-                            <textarea name="toDoNotes"></textarea> <br />
-                            <button type="submit">Create to do</button>
+                            <textarea name="toDoNotes" class="toDoNotes"></textarea> <br />
+                            <button class="modalSubmit" type="submit">Create to do</button>
                         </div>
                     </form>
                 </dialog>
