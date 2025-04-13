@@ -2,6 +2,7 @@ import { createProject } from './createProject.js';
 import { createToDo } from './createToDo.js';
 import { projects } from './data.js';
 import { optionAdd } from './optionAdd.js';
+import { addProjectBtns } from './addProjectBtns.js';
 
 export function setupModals() {
     document.querySelector('.openBtnProject').addEventListener('click', () => {
@@ -19,17 +20,20 @@ export function setupModals() {
         })
     })
 
+    // Create projects
     document.querySelector('.projectForm').addEventListener('submit', (event) => {
         event.preventDefault();
         const projectName = document.querySelector('.projectName').value;
         const dialog = event.target.closest('dialog');
         if (dialog) dialog.close();
         createProject(projectName);
-        optionAdd()
+        optionAdd();
+        addProjectBtns();
     })
 
     const defaultProject = createProject('Today');
-    optionAdd()
+    optionAdd();
+    addProjectBtns();
 
     document.querySelector('.toDoForm').addEventListener('submit', (event) => {
         event.preventDefault();
