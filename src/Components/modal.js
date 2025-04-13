@@ -1,5 +1,7 @@
 import { createProject } from './createProject.js';
 import { createToDo } from './createToDo.js';
+import { projects } from './data.js';
+import { optionAdd } from './optionAdd.js';
 
 export function setupModals() {
     document.querySelector('.openBtnProject').addEventListener('click', () => {
@@ -23,17 +25,24 @@ export function setupModals() {
         const dialog = event.target.closest('dialog');
         if (dialog) dialog.close();
         createProject(projectName);
-
+        optionAdd()
     })
 
     const defaultProject = createProject('Today');
+    optionAdd()
 
     document.querySelector('.toDoForm').addEventListener('submit', (event) => {
         event.preventDefault();
         const toDoName = document.querySelector('.toDoName').value;
         const notes = document.querySelector('.toDoNotes').value;
+        const selectValue = document.querySelector('.projectSelect').value;
+        const selectedProject = projects.find(p => p.name === selectValue);
         const dialog = event.target.closest('dialog');
+        
         if (dialog) dialog.close();
-        createToDo(toDoName, notes);
+        
+        const newToDo = createToDo(toDoName, notes);
+        selectedProject.todos.push(newToDo)
+        console.log(selectedProject);
     })
 }
