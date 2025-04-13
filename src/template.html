@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ToDo</title>
+    <title>DoIt!</title>
 </head>
 <body>
     <div class="container">
@@ -11,12 +11,12 @@
             <div class="projectsContainer">
                 <div class="projectsBtns">
                     <h3>Projects</h3>
-                    <button>New Project +</button>
-                    <div class="newProjectModal">
-                        <form>
+                    <button class="openBtnProject">New Project +</button>
+                    <dialog class="modal">
+                        <form class="projectForm">
                             <div class="modalTop">
                                 <h3>Create new project</h3>
-                            <button class="modalClose"></button>
+                                <button type="button" class="modalClose">Close</button>
                             </div>
                             <div class="modalBottom">
                                 <label for="projectName">Project name:</label>
@@ -24,29 +24,29 @@
                                 <button type="submit">Create</button>
                             </div>
                         </form>
-                    </div>
+                    </dialog>
                 </div>
             </div>
         </div>
         <div class="main">
             <div class="toDoBtns">
                 <h3>To do</h3>
-                <button>New to do +</button>
-                <div class="newToDoModal">
+                <button class="openBtnToDo">New to do +</button>
+                <dialog class="modal">
                     <form class="toDoForm">
                         <div class="modalTop" >
                             <h3>Create new to do</h3>
-                            <button class="modalClose">Close</button>
+                            <button type="button" class="modalClose">Close</button>
                         </div>
                         <div class="modalBottom">
                             <label for="toDoName">To do name:</label>
                             <input type="text" name="toDoName" required> <br />
-                            <label for="toDoNotes"></label>
+                            <label for="toDoNotes">Notes:</label> <br />
                             <textarea name="toDoNotes"></textarea> <br />
                             <button type="submit">Create to do</button>
                         </div>
                     </form>
-                </div>
+                </dialog>
             </div>
             <div class="toDoContainer">
                 
