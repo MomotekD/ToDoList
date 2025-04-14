@@ -3,6 +3,7 @@ import { createToDo } from './createToDo.js';
 import { projects } from './data.js';
 import { optionAdd } from './optionAdd.js';
 import { addProjectBtns } from './addProjectBtns.js';
+import { saveProjectsToLocalStorage } from './saveProjectsToLocalStorage.js';
 
 export function setupModals() {
     document.querySelector('.openBtnProject').addEventListener('click', () => {
@@ -29,9 +30,12 @@ export function setupModals() {
         createProject(projectName);
         optionAdd();
         addProjectBtns();
+        saveProjectsToLocalStorage();
     })
 
-    const defaultProject = createProject('Today');
+    if (!projects.find(p => p.name === 'Today')) {
+        createProject('Today');
+    }
     optionAdd();
     addProjectBtns();
 
@@ -49,7 +53,7 @@ export function setupModals() {
         if (dialog) dialog.close();
         
         const newToDo = createToDo(toDoName, notes, date);
-        selectedProject.todos.push(newToDo)
-        console.log(selectedProject);
+        selectedProject.todos.push(newToDo);
+        saveProjectsToLocalStorage();
     })
 }

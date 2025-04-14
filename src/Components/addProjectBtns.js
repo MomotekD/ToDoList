@@ -1,4 +1,5 @@
 import { projects } from "./data";
+import { saveProjectsToLocalStorage } from "./saveProjectsToLocalStorage";
 
 export function addProjectBtns(){
     const projectsBtns = document.querySelector('.projectsBar');
@@ -31,14 +32,19 @@ export function addProjectBtns(){
                 const toDoDone = document.createElement('select');
                 toDoDone.addEventListener('change', (event) => {
                     todo.done = event.target.value;
-                    console.log(todo.done);
+                    saveProjectsToLocalStorage();
                 });
                 
                 const toDoRemove = document.createElement('button');
                 toDoRemove.textContent = 'Remove to do';
                 toDoRemove.classList.add('removeToDoBtn');
                 toDoRemove.addEventListener('click', (event) => {
-                    toDoDiv.innerHTML = '';
+                    const index = project.todos.findIndex(t => t.id === todo.id);
+                    if(index !== -1) {
+                        project.todos.splice(index, 1);
+                    }
+                    toDoDiv.remove()
+                    saveProjectsToLocalStorage();
                 });
 
                 toDoContainer.appendChild(toDoDiv);
@@ -52,6 +58,10 @@ export function addProjectBtns(){
                 selectOptions.forEach((option) => {
                     const selectOption = document.createElement('option');
                     selectOption.textContent = `${option}`;
+
+                    if (option === todo.done) {
+                        selectOption.selected = true;
+                    }
 
                     toDoDone.appendChild(selectOption);
                 })
