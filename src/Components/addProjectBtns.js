@@ -13,9 +13,25 @@ export function addProjectBtns(){
             toDoContainer.innerHTML = '';
             
             project.todos.forEach((todo) => {
+                const toDoDiv = document.createElement('div');
+                toDoDiv.classList.add('toDoItem');
+                
                 const toDoTitle = document.createElement('h4');
                 toDoTitle.textContent = `${todo.name}`;
-                toDoContainer.appendChild(toDoTitle);
+                
+                const toDoNotes = document.createElement('p');
+                toDoNotes.textContent = `${todo.notes}`
+                
+                const toDoRemove = document.createElement('button');
+                toDoRemove.classList.add('removeToDoBtn');
+                toDoRemove.addEventListener('click', (event) => {
+                    toDoDiv.innerHTML = '';
+                });
+
+                toDoContainer.appendChild(toDoDiv);
+                toDoDiv.appendChild(toDoTitle);
+                toDoDiv.appendChild(toDoNotes);
+                toDoDiv.appendChild(toDoRemove);
             })
         });
     })
