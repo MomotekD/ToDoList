@@ -2,7 +2,7 @@ import { projects } from './data.js';
 
 export function createProject(name){
     const project = {
-        id: crypto.randomUUID,
+        id: crypto.randomUUID(),
         name,
         todos: [],
     }

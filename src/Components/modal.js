@@ -39,13 +39,16 @@ export function setupModals() {
         event.preventDefault();
         const toDoName = document.querySelector('.toDoName').value;
         const notes = document.querySelector('.toDoNotes').value;
+        const date = document.querySelector('.dueDate').value;
+
         const selectValue = document.querySelector('.projectSelect').value;
         const selectedProject = projects.find(p => p.name === selectValue);
+
         const dialog = event.target.closest('dialog');
         
         if (dialog) dialog.close();
         
-        const newToDo = createToDo(toDoName, notes);
+        const newToDo = createToDo(toDoName, notes, date);
         selectedProject.todos.push(newToDo)
         console.log(selectedProject);
     })
