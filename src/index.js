@@ -1,6 +1,5 @@
 import './styles.css';
 import { setupModals } from './Components/modal.js';
-import { saveProjectsToLocalStorage } from './Components/saveProjectsToLocalStorage.js';
 import { projects } from './Components/data.js';
 
 const savedProjects = localStorage.getItem('projects');
