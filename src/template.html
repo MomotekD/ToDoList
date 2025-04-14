@@ -16,7 +16,7 @@
                         <form class="projectForm">
                             <div class="modalTop">
                                 <h3>Create new project</h3>
-                                <button type="button" class="modalClose">Close</button>
+                                <button type="button" class="modalClose">&#10005;</button>
                             </div>
                             <div class="modalBottom">
                                 <label for="projectName">Project name:</label>
@@ -39,11 +39,13 @@
                     <form class="toDoForm">
                         <div class="modalTop" >
                             <h3>Create new to do</h3>
-                            <button type="button" class="modalClose">Close</button>
+                            <button type="button" class="modalClose">&#10005;</button>
                         </div>
                         <div class="modalBottom">
                             <label for="toDoName">To do name:</label>
                             <input type="text" name="toDoName" class="toDoName" required> <br />
+                            <label for="dueDate">Due date:</label>
+                            <input type="date" name="dueDate" class="dueDate" required> <br />
                             <label for="toDoNotes">Notes:</label> <br />
                             <textarea name="toDoNotes" class="toDoNotes"></textarea> <br />
                             <label for="projectSelect">Select Project:</label>
