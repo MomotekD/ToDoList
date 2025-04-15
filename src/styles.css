@@ -1,27 +1,176 @@
 * {
     box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
 }
 
+:root {
+  --primary-color: #f1f1f1;
+  --secondary-text-color: #f1f1f1;
+  --secondary-color: #2680d5;
+  
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 8fr;
+  grid-template-rows: 1fr;
+}
+
+.sideBar {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  height: 100vh;
+}
+
+.projectItem {
+  width: 100%;
+  padding-block: 1vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: ease-in 200ms;
+  
+}
+
+.projectItem:hover{
+  transition: ease-in 200ms;
+  background-color: #47a2e8;
+  padding-block: 1.2vh;
+  border-bottom: var(--secondary-text-color) 1px solid;
+}
+
+.projectsHeader{
+  margin-inline: 2vw;
+  margin-block: 3vh;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--secondary-text-color);
+}
+
+.projectBtn {
+  background-color: transparent;
+  margin-inline: 2vw;
+  border: none;
+  height: 100%;
+  color: var(--secondary-text-color);
+}
+
+.projectBtn:hover{
+  cursor: pointer;
+}
+
 dialog::backdrop {
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.276);
   }
   
-  dialog {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 1.5rem;
-    border: none;
-    border-radius: 10px;
-    background: white;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-  }
+dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1.5rem;
+  border: none;
+  border-radius: 10px;
+  background: var(--secondary-color);
+  color: var(--secondary-text-color);
+  box-shadow: 0px 0px 10px 2px rgba(94, 94, 94, 0.412);
+}
 
 .modalTop {
     display: flex;
     justify-content: space-between;
     padding-bottom: 10%;
+}
+
+.main{
+  background-color: var(--primary-color);
+}
+
+.toDoContainer {
+  display: grid;
+  max-height: 82vh;
+  overflow-y: auto;
+  grid-template-rows: 1fr;
+}
+
+.toDoHeader {
+  margin-inline: 2vw;
+  margin-block: 3vh;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.toDoBtns {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5vh;
+}
+
+.openBtnToDo {
+  width: 8vw;
+  height: 4vh;
+  align-self: flex-end;
+  border: none;
+  border-radius: 5px;
+  margin-right: 2vw;
+  background-color: var(--secondary-color);
+  color: var(--secondary-text-color);
+  transition: ease-in 200ms;
+}
+
+.openBtnToDo:hover{
+  width: 8.5vw;
+  height: 4.5vh;
+  cursor: pointer;
+  transition: ease-in 200ms;
+}
+
+.toDoItem {
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+  background-color: var(--secondary-color);
+  color: #f1f1f1;
+  margin: 2vw;
+  padding: 2vw;
+  box-shadow: 3px 5px 5px rgba(101, 101, 101, 0.545);
+}
+
+.removeToDoBtn {
+  width: 1.5vw;
+  height: 1.5vw;
+  align-self: center;
+  justify-self: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #f1f1f1;
+  font-size: 1.2rem;
+}
+
+.modalClose {
+  background-color: var(--secondary-color);
+  margin-left: 2vw;
+  border: none;
+  color: var(--secondary-text-color);
+}
+
+.modalBottom {
+  display: grid;
+}
+
+.modalSubmit {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  border: none;
+  margin-top: 1vh;
+  padding-block: 2%;
+}
+
+button:hover{
+  cursor: pointer;
 }
