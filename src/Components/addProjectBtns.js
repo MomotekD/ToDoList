@@ -1,14 +1,36 @@
 import { projects } from "./data";
 import { saveProjectsToLocalStorage } from "./saveProjectsToLocalStorage";
+import { optionAdd } from "./optionAdd";
 
 export function addProjectBtns(){
     const projectsBtns = document.querySelector('.projectsBar');
     projectsBtns.innerHTML = '';
 
     projects.forEach((project) => {
+        const projectDiv = document.createElement('div');
+        projectDiv.classList.add('projectItem');
+
         const projectBtn = document.createElement('button');
         projectBtn.textContent = `${project.name}`;    
-        projectsBtns.appendChild(projectBtn);
+        
+        const projectRemove = document.createElement('button');
+        projectRemove.textContent = 'X';
+        projectRemove.addEventListener('click',(event) => {
+            const index = projects.findIndex(p => p.id === project.id);
+            if(index !== -1) {
+                projects.splice(index, 1);
+            }
+            projectDiv.remove();
+            saveProjectsToLocalStorage();
+            optionAdd();
+        })
+
+        projectsBtns.appendChild(projectDiv);
+        projectDiv.appendChild(projectBtn);
+        if(project.name != 'Today'){
+            projectDiv.appendChild(projectRemove);
+        }
+
         projectBtn.addEventListener('click', (event) => {
             const toDoContainer = document.querySelector('.toDoContainer')
             toDoContainer.innerHTML = '';
