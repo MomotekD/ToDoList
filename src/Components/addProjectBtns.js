@@ -11,10 +11,12 @@ export function addProjectBtns(){
         projectDiv.classList.add('projectItem');
 
         const projectBtn = document.createElement('button');
+        projectBtn.classList.add('projectBtn')
         projectBtn.textContent = `${project.name}`;    
         
         const projectRemove = document.createElement('button');
-        projectRemove.textContent = 'X';
+        projectRemove.textContent = '×';
+        projectRemove.classList.add('projectBtn')
         projectRemove.addEventListener('click',(event) => {
             const index = projects.findIndex(p => p.id === project.id);
             if(index !== -1) {
@@ -58,7 +60,7 @@ export function addProjectBtns(){
                 });
                 
                 const toDoRemove = document.createElement('button');
-                toDoRemove.textContent = 'Remove to do';
+                toDoRemove.textContent = '×';
                 toDoRemove.classList.add('removeToDoBtn');
                 toDoRemove.addEventListener('click', (event) => {
                     const index = project.todos.findIndex(t => t.id === todo.id);

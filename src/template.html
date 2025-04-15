@@ -10,13 +10,15 @@
         <div class="sideBar">
             <div class="projectsContainer">
                 <div class="projectsBtns">
-                    <h3>Projects</h3>
-                    <button class="openBtnProject">New Project +</button>
+                    <h3 class="projectsHeader">Projects</h3>
+                    <div class="projectItem">
+                        <button class="openBtnProject projectBtn">New Project +</button>
+                    </div>
                     <dialog class="modal">
                         <form class="projectForm">
                             <div class="modalTop">
                                 <h3>Create new project</h3>
-                                <button type="button" class="modalClose">&#10005;</button>
+                                <button type="button" class="modalClose">&#x2715;</button>
                             </div>
                             <div class="modalBottom">
                                 <label for="projectName">Project name:</label>
@@ -33,13 +35,13 @@
         </div>
         <div class="main">
             <div class="toDoBtns">
-                <h3>To do</h3>
+                <h3 class="toDoHeader">To do</h3>
                 <button class="openBtnToDo">New to do +</button>
                 <dialog class="modal">
                     <form class="toDoForm">
                         <div class="modalTop" >
                             <h3>Create new to do</h3>
-                            <button type="button" class="modalClose">&#10005;</button>
+                            <button type="button" class="modalClose">&#x2715;</button>
                         </div>
                         <div class="modalBottom">
                             <label for="toDoName">To do name:</label>
