@@ -211,7 +211,7 @@ button:hover{
 
 .toDoDone option {
   background-color: var(--primary-color);
-  color: var(--secondary-text-color);
+  color: var(--secondary-color);
 }
 
 .toDoDone::-ms-expand {
