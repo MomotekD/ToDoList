@@ -21,9 +21,7 @@ export function setupModals() {
         })
     })
 
-    // Create projects
     document.querySelector('.projectForm').addEventListener('submit', (event) => {
-        event.preventDefault();
         const projectName = document.querySelector('.projectName').value;
         const dialog = event.target.closest('dialog');
         if (dialog) dialog.close();
@@ -33,14 +31,13 @@ export function setupModals() {
         saveProjectsToLocalStorage();
     })
 
-    if (!projects.find(p => p.name === 'Today')) {
+    if (!projects.find(project => project.name === 'Today')) {
         createProject('Today');
     }
     optionAdd();
     addProjectBtns();
 
     document.querySelector('.toDoForm').addEventListener('submit', (event) => {
-        event.preventDefault();
         const toDoName = document.querySelector('.toDoName').value;
         const notes = document.querySelector('.toDoNotes').value;
         const date = document.querySelector('.dueDate').value;
