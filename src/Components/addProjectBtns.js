@@ -4,6 +4,7 @@ import { optionAdd } from "./optionAdd";
 
 export function addProjectBtns(){
     const projectsBtns = document.querySelector('.projectsBar');
+    const toDoHeader = document.querySelector('.toDoHeader')
     projectsBtns.innerHTML = '';
 
     projects.forEach((project) => {
@@ -25,6 +26,7 @@ export function addProjectBtns(){
             projectDiv.remove();
             saveProjectsToLocalStorage();
             optionAdd();
+            location.reload();
         })
 
         projectsBtns.appendChild(projectDiv);
@@ -35,6 +37,7 @@ export function addProjectBtns(){
 
         projectBtn.addEventListener('click', (event) => {
             const toDoContainer = document.querySelector('.toDoContainer')
+            toDoHeader.textContent = `Project: ${project.name}`
             toDoContainer.innerHTML = '';
             
             project.todos.forEach((todo) => {
@@ -47,17 +50,48 @@ export function addProjectBtns(){
                 toDoTitle.textContent = `${todo.name}`;
                 
                 const toDoNotes = document.createElement('p');
-                toDoNotes.textContent = `${todo.notes}`;
+                toDoNotes.textContent = `Notes: ${todo.notes}`;
 
                 const toDoDueDate = document.createElement('p');
                 toDoDueDate.classList.add('dueDate');
                 toDoDueDate.textContent = `Due: ${todo.dueDate}`
 
                 const toDoDone = document.createElement('select');
+                toDoDone.classList.add('toDoDone');
                 toDoDone.addEventListener('change', (event) => {
                     todo.done = event.target.value;
                     saveProjectsToLocalStorage();
                 });
+
+                const editToDo = document.createElement('button');
+                editToDo.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M3 6V8H14V6H3M3 10V12H14V10H3M20 10.1C19.9 10.1 19.7 10.2 19.6 10.3L18.6 11.3L20.7 13.4L21.7 12.4C21.9 12.2 21.9 11.8 21.7 11.6L20.4 10.3C20.3 10.2 20.2 10.1 20 10.1M18.1 11.9L12 17.9V20H14.1L20.2 13.9L18.1 11.9M3 14V16H10V14H3Z" />
+                    </svg>`;
+                editToDo.classList.add('editBtn')
+                editToDo.addEventListener('click', (event) => {
+                    document.querySelector('.editToDo .modal')?.showModal();
+                    const title = document.querySelector('.toDoNameEdit');
+                    const date = document.querySelector('.toDoDateEdit');
+                    const notes = document.querySelector('.toDoNotesEdit');
+
+                    title.value = `${todo.name}`;
+                    date.value = `${todo.dueDate}`;
+                    notes.value = `${todo.notes}`;
+
+                });
+
+                document.querySelector('.toDoEditForm').addEventListener('submit', (event) => {
+                    const title = document.querySelector('.toDoNameEdit').value;
+                    const date = document.querySelector('.toDoDateEdit').value;
+                    const notes = document.querySelector('.toDoNotesEdit').value;
+
+                    todo.name = title;
+                    todo.dueDate = date;
+                    todo.notes = notes;
+
+                    saveProjectsToLocalStorage();
+                })
                 
                 const toDoRemove = document.createElement('button');
                 toDoRemove.textContent = '×';
@@ -70,13 +104,18 @@ export function addProjectBtns(){
                     toDoDiv.remove()
                     saveProjectsToLocalStorage();
                 });
+                
+                const selectEditDiv = document.createElement('div');
+                selectEditDiv.classList.add('selectEditDiv');
 
                 toDoContainer.appendChild(toDoDiv);
 
                 toDoDiv.appendChild(toDoTitle);
                 toDoDiv.appendChild(toDoNotes);
                 toDoDiv.appendChild(toDoDueDate);
-                toDoDiv.appendChild(toDoDone);
+                toDoDiv.appendChild(selectEditDiv);
+                selectEditDiv.appendChild(toDoDone);
+                selectEditDiv.appendChild(editToDo);
                 toDoDiv.appendChild(toDoRemove);
 
                 selectOptions.forEach((option) => {
@@ -88,8 +127,11 @@ export function addProjectBtns(){
                     }
 
                     toDoDone.appendChild(selectOption);
-                })
-            })
+                });
+            });
         });
-    })
+        if (project.name === 'Today') {
+            projectBtn.click();
+        }
+    });
 }
