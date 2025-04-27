@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DoIt!</title>
+<script defer src="main.js"></script></head>
+<body>
+    <div class="container">
+        <div class="sideBar">
+            <div class="projectsContainer">
+                <div class="projectsBtns">
+                    <h3 class="projectsHeader">Projects</h3>
+                    <div class="projectItem">
+                        <button class="openBtnProject projectBtn">New Project +</button>
+                    </div>
+                    <dialog class="modal">
+                        <form class="projectForm">
+                            <div class="modalTop">
+                                <h3>Create new project</h3>
+                                <button type="button" class="modalClose">&#x2715;</button>
+                            </div>
+                            <div class="modalBottom">
+                                <label for="projectName">Project name:</label>
+                                <input type="text" name="projectName" class="projectName" required>
+                                <button class="modalSubmit" type="submit">Create</button>
+                            </div>
+                        </form>
+                    </dialog>
+                    <div class="projectsBar">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main">
+            <div class="toDoBtns">
+                <h3 class="toDoHeader">To do</h3>
+                <button class="openBtnToDo">New to do +</button>
+                <dialog class="modal">
+                    <form class="toDoForm">
+                        <div class="modalTop" >
+                            <h3>Create new to do</h3>
+                            <button type="button" class="modalClose">&#x2715;</button>
+                        </div>
+                        <div class="modalBottom">
+                            <label for="toDoName">To do name:</label>
+                            <input type="text" name="toDoName" class="toDoName" required> <br />
+                            <label for="dueDate">Due date:</label>
+                            <input type="date" name="dueDate" class="dueDate" required> <br />
+                            <label for="toDoNotes">Notes:</label> <br />
+                            <textarea name="toDoNotes" class="toDoNotes"></textarea> <br />
+                            <label for="projectSelect">Select Project:</label>
+                            <select name="projectSelect" class="projectSelect"></select> <br />
+                            <button class="modalSubmit" type="submit">Create to do</button>
+                        </div>
+                    </form>
+                </dialog>
+                <div class="editToDo">
+                    <dialog class="modal">
+                        <div class="modalTop" >
+                            <h3>Edit to do</h3>
+                            <button type="button" class="modalClose">&#x2715;</button>
+                        </div>
+                        <form class="toDoEditForm">
+                            <div class="modalBottom">
+                                <label for="toDoNameEdit">To do name:</label>
+                                <input type="text" class="toDoNameEdit"> <br />
+                                <label for="toDoDateEdit">Due date:</label>
+                                <input type="date" class="toDoDateEdit"> <br />
+                                <label for="toDoNotesEdit">Notes:</label> <br />
+                                <textarea name="toDoNotesEdit" class="toDoNotesEdit"></textarea> <br />
+                                <button class="modalSubmit" type="submit">Edit to do</button>
+                            </div>
+                        </form>
+                    </dialog>
+                </div>
+            </div>
+            <div class="toDoContainer">
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>
